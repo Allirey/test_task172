@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}List{% endblock %}
+
+{% block body %}
+    <h2>Currency exchange:</h2>
+        <table>
+        <thead>
+        <tr>
+            <td><b>Currency</b></td>
+            <td><b>Buy</b></td>
+            <td><b>Sell</b></td>
+        </tr>
+        </thead>
+        <tbody>
+        {% for record in currencies %}
+            <tr>
+                <td><a href="{% url "currency:history" record.code.lower %}">{{ record.code }}</a></td>
+                <td>{{ record.buy_rate }}</td>
+                <td>{{ record.sale_rate }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

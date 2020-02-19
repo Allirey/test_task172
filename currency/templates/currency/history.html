@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}history{% endblock %}
+
+{% block body %}
+    <h2>{{ code.upper }} exchange rate history:</h2>
+    <table>
+        <thead>
+        <tr>
+            <td><b>Buy</b></td>
+            <td><b>Sell</b></td>
+            <td><b>Begin date</b></td>
+            <td><b>End date</b></td>
+        </tr>
+        </thead>
+        <tbody>
+        {% for record in records %}
+            <tr>
+                <td>{{ record.buy_rate }}</td>
+                <td>{{ record.sale_rate }}</td>
+                <td>{{ record.start_date|date:'d.m.Y' }}</td>
+                <td>{{ record.end_date|default_if_none:""|date:'d.m.Y'}}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
